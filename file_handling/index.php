@@ -1,4 +1,19 @@
 <?php
+//      $root_file = "filetext/sample.txt";
+    
+
+
+// if(is_readable($root_file)){
+//   $file = fopen($root_file, "r");
+//   echo gettype($file);
+//   while( !feof($file)) {
+//     $line = fgets($file);
+//     echo $line. "<br>";
+//   }
+//   echo fread($file,filesize($root_file));
+//   fclose($file);
+
+// }
 
 if (isset($_POST['submit-mode'])) {
     //   echo 'yes';
@@ -132,39 +147,41 @@ if (isset($_POST['submit-mode'])) {
         <div>
             <?php
 
-            if (isset($_POST['submit-reg'])) {
-                // echo "yes";
-                $username = $_REQUEST['username'];
-                $mobile = $_REQUEST['mobile'];
+            // if (isset($_POST['submit-reg'])) {
+            //     // echo "yes";
+            //     $username = $_REQUEST['username'];
+            //     $mobile = $_REQUEST['mobile'];
                 
-                $namepattern = " /^[a-zA-Z]+$/ ";
-                $numpattern = " /^[6-9]{1}[0-9]{9}+$/ ";
-                // if(empty($username)){
-                //     echo '<h5 class="text-danger">This field is required👍</h5>';
-                // }else{
-                //      if(!preg_match($namepattern,$username)){
-                //          echo '<h5 class="text-danger">Invalid username</h5>';
-                //      }else{
-                //         echo '<h5 class="text-success">valid username</h5>';
-                //      }
-                // }
-                if(empty($mobile)){
-                    echo '<h5 class="text-danger">This field is required👍</h5>';
-                }else{
-                     if(!preg_match($numpattern,$username)){
-                         echo '<h5 class="text-danger">Invalid mobile number</h5>';
-                     }else{
-                        echo '<h5 class="text-success">valid number</h5>';
-                     }
-                }
+            //     $namepattern = " /^[a-zA-Z]+$/ ";
+            //     $numpattern = " /^[6-9]{1}[0-9]{9}+$/ ";
+            //     // if(empty($username)){
+            //     //     echo '<h5 class="text-danger">This field is required👍</h5>';
+            //     // }else{
+            //     //      if(!preg_match($namepattern,$username)){
+            //     //          echo '<h5 class="text-danger">Invalid username</h5>';
+            //     //      }else{
+            //     //         echo '<h5 class="text-success">valid username</h5>';
+            //     //      }
+            //     // }
+            //     if(empty($mobile)){
+            //         echo '<h5 class="text-danger">This field is required👍</h5>';
+            //     }else{
+            //          if(!preg_match($numpattern,$username)){
+            //              echo '<h5 class="text-danger">Invalid mobile number</h5>';
+            //          }else{
+            //             echo '<h5 class="text-success">valid number</h5>';
+            //          }
+            //     }
                 
 
-            }
+            // }
 
             // echo getcwd();
             // echo chdir("filetext");
+            //  echo getcwd();
             // echo $a = getcwd();
             // echo $b=  opendir($a);
+          
             // echo readdir($b);
             // rmdir("add");
         //   $o =  opendir("localhost/oops/file_handling/");
@@ -172,12 +189,25 @@ if (isset($_POST['submit-mode'])) {
         //     closedir($o);
             // print_r($b);
             // echo $b;
+       
+            if(isset($_POST['submit-reg'])){
+                $img = [];
+                // print_r($_FILES['img']['name']);
+               foreach($_FILES['img']['name'] as $key => $val){
+                   $imgname = $_FILES['img']['name'][$key];
+                   print_r($imgname);
+                  $img[] = $imgname;
+               }
+            //    print_r($imgname);
+               echo "<pre>";
+               print_r($img);
+            }
          
             ?>
-            <form action="" method="post">
+            <form  method="post" enctype="multipart/form-data">
                 <div>
-                    <input type="text" placeholder="username" name="username" class="form-control mt-3 w-25">
-                    <input type="text" placeholder="mobile" name="mobile" class="form-control mt-3 w-25">
+                    <input type="file" placeholder="username" name="img[]" class="form-control mt-3 w-25" multiple>
+                   
                     <button type="submit" name="submit-reg" class="btn btn-warning btn-sm w-25 mt-3">Submit</button>
                 </div>
             </form>
