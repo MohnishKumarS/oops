@@ -28,32 +28,9 @@
     WHERE states.`name` = 'Tamil Nadu'
     LIMIT $x,$y";
     $res = $conn->query($sql);
-    // $res->execute();
-    // $get = $res->fetch_array();
-    // print_r($get);
-
-    // $create_json = [];
-    // while($row = $res->fetch_assoc()){
-    // //    echo "<pre>";
-    // // print_r($row);
-    // // echo "</pre>";
-
-    //    $create_json[] = $row;
-    // }
-    
-    // $json_encode = json_encode($create_json,JSON_PRETTY_PRINT);
-    // file_put_contents('countrylist.json',$json_encode);
 
 
-    // ============fetch into json file 
-    // ====================================
 
-    $get_json = file_get_contents('countrylist.json');
-    $json_decode = json_decode($get_json,true);  
-
-    // echo "<pre>"; 
-    // print_r($json_decode);
-    // echo "</pre>"; 
      ?>
 
   
@@ -117,10 +94,10 @@
     <?php 
 
     if($pagenow > 1){
-      echo ' <li class="page-item"><a class="page-link " href="countrylist-pagination.php?page='.$pagenow - 1 .'">Previous</a></li>';
+      echo ' <li class="page-item"><a class="page-link" href="countrylist-pagination.php?page='.$pagenow - 1 .'">Previous</a></li>';
       
     }else{
-      echo ' <li class="page-item disabled"><a class="page-link " href="countrylist-pagination.php?page='.$pagenow - 1 .'">Previous</a></li>';
+      echo ' <li class="page-item disabled"><a class="page-link" href="countrylist-pagination.php?page='.$pagenow - 1 .'">Previous</a></li>';
     }
     
  
